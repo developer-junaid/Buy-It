@@ -7,7 +7,7 @@ import { ProductList } from "../components"
 // Home ( / )
 export default function Home() {
   return (
-    <div>
+    <div className="min-h-screen">
       <ProductList />
     </div>
   )

@@ -1,37 +1,41 @@
 import React, { useEffect, useState } from "react"
 
-// Links
+// Permalinks
 import { GET_PRODUCTS } from "../../constants/Permalinks"
 
-// ProductList
 export const ProductList = () => {
   const [products, setProducts] = useState([])
 
-  // Redirect
   const getProducts = async () => {
-    const response = await fetch(GET_PRODUCTS)
-    const data = await response.json()
-    setProducts(data.products.data)
+    const allProductsResponse = await fetch(GET_PRODUCTS)
+    const allProductsData = await allProductsResponse.json()
+    setProducts(allProductsData.products)
   }
 
   useEffect(() => {
     getProducts()
-    console.log(products)
   }, [])
 
-  // Return
   return (
-    <div>
+    <div className="bg-blue-50 h-screen">
       <h1 className="text-3xl text-center">Products</h1>
 
-      <ul className="shadow-xl bg-gray-500 text-white w-2/3 mx-auto mt-4 p-5">
+      <ul>
         {products.length &&
           products.map(product => {
             return (
-              <>
+              <div
+                key={product.id}
+                className="bg-white shadow-lg text-gray-800 flex flex-col justify-center w-2/3 mx-auto mt-4 p-5"
+              >
+                <img src={product.image} alt="" />
                 <li>Name: {product.name}</li>
-                <li>Price: $10</li>
-              </>
+                <li>Price: ${product.price}</li>
+                <li>Description: {product.description}</li>
+                <button className="px-8 py-2 bg-blue-400 text-white mt-3 rounded-md">
+                  Buy
+                </button>
+              </div>
             )
           })}
       </ul>
