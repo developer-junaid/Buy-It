@@ -32,6 +32,7 @@ const handler = async () => {
             image: product.images[0],
             price: parseFloat(price.unit_amount_decimal) / 100,
             currency: price.currency,
+            priceId: price.id,
           })
         }
       })

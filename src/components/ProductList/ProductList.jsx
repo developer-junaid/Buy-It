@@ -33,7 +33,7 @@ export const ProductList = () => {
                 <li>Price: ${product.price}</li>
                 <li>Description: {product.description}</li>
                 <button className="px-8 py-2 bg-blue-400 text-white mt-3 rounded-md">
-                  Buy
+                  Add to cart
                 </button>
               </div>
             )
