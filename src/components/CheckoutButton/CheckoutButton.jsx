@@ -9,21 +9,17 @@ import { loadStripe } from "@stripe/stripe-js"
 const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY)
 
 // Checkout
-export const Checkout = () => {
+export const CheckoutButton = ({ cartItems }) => {
   // Redirect
   const redirectToCheckout = async () => {
     const stripe = await stripePromise
     const response = await fetch(CHECKOUT, {
       method: "POST",
       body: JSON.stringify({
-        cartItems: [
-          { price: "price_1Jp651Jsab2N7UO9Y1hY0la8", quantity: 1 },
-          { price: "price_1Jp640Jsab2N7UO9DGjQ8ujQ", quantity: 2 },
-        ],
+        cartItems,
       }),
     })
     const data = await response.json()
-
     // Call Stripe's checkout function
     await stripe.redirectToCheckout({
       sessionId: data.id,
@@ -32,9 +28,11 @@ export const Checkout = () => {
 
   // Return
   return (
-    <div>
-      <h2>Sun Glasses</h2>
-      <button onClick={redirectToCheckout}>Checkout</button>
-    </div>
+    <button
+      className="bg-purple-800 text-white px-4 py-3 my-4 self-center"
+      onClick={redirectToCheckout}
+    >
+      Checkout
+    </button>
   )
 }

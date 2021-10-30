@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 // Permalinks
 import { GET_PRODUCTS } from "../../constants/Permalinks"
 
-export const ProductList = () => {
+export const ProductList = ({ cart, setCart }) => {
   const [products, setProducts] = useState([])
 
   const getProducts = async () => {
@@ -12,16 +12,20 @@ export const ProductList = () => {
     setProducts(allProductsData.products)
   }
 
+  const addToCart = product => {
+    let isEmpty = cart.length === 0
+
+    isEmpty ? setCart([product]) : setCart([...cart, product])
+  }
+
   useEffect(() => {
     getProducts()
   }, [])
 
   return (
-    <div className="bg-blue-50 h-screen">
-      <h1 className="text-3xl text-center">Products</h1>
-
+    <div className="h-full">
       <ul>
-        {products.length &&
+        {products.length !== 0 &&
           products.map(product => {
             return (
               <div
@@ -32,7 +36,10 @@ export const ProductList = () => {
                 <li>Name: {product.name}</li>
                 <li>Price: ${product.price}</li>
                 <li>Description: {product.description}</li>
-                <button className="px-8 py-2 bg-blue-400 text-white mt-3 rounded-md">
+                <button
+                  onClick={() => addToCart(product)}
+                  className="px-8 py-2 bg-blue-400 text-white mt-3 rounded-md"
+                >
                   Add to cart
                 </button>
               </div>
