@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "buyit",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Ecommerce Application built with Gatsby, Stripe and Serverless functions",
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
@@ -14,9 +14,13 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^1.20.3",
+    "dotenv": "^10.0.0",
     "gatsby": "^4.0.1",
+    "gatsby-source-stripe": "^3.2.2",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "stripe": "^8.184.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
