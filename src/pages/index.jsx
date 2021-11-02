@@ -1,8 +1,10 @@
 import React, { useState } from "react"
 
 // Components
-import { CheckoutButton } from "../components"
-import { ProductList } from "../components"
+import { CheckoutButton, ProductList, Layout } from "../components"
+
+// Helmet
+import { Helmet } from "react-helmet"
 
 // Home ( / )
 export default function Home() {
@@ -34,12 +36,14 @@ export default function Home() {
   })
 
   return (
-    <div className="min-h-full flex flex-col bg-blue-50">
-      <h1 className="text-3xl text-center">
-        Products : Cart({cartItems.length})
-      </h1>
-      <ProductList setCart={setCart} cart={cart} />
-      <CheckoutButton cartItems={cartItems} />
-    </div>
+    <Layout>
+      <div className="min-h-full flex flex-col bg-blue-50">
+        <h1 className="text-3xl text-center">
+          Products : Cart({cartItems.length})
+        </h1>
+        <ProductList setCart={setCart} cart={cart} />
+        <CheckoutButton cartItems={cartItems} />
+      </div>
+    </Layout>
   )
 }
