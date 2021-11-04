@@ -24,7 +24,7 @@ export const Nav = () => {
               rounded-lg
             "
         ></div>
-        <h1 className="text-3xl text-gray-600 ml-2">Daraz</h1>
+        <h1 className="text-3xl text-gray-600 ml-2">Buy-it</h1>
       </div>
       <div>
         <Link to="/" className="text-gray-600 hover:text-purple-600 p-4">

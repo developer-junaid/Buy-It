@@ -25,7 +25,12 @@ export const Footer = () => {
           Terms of Service
         </a>
       </div>
-      <p>&copy; Copyright Reserved 2021</p>
+      <a
+        href="https://developerjunaid.com/"
+        className="text-gray-600 hover:text-purple-600 inline-block"
+      >
+        &copy; Developer: Junaid Qureshi | 2021
+      </a>
     </div>
   )
 }

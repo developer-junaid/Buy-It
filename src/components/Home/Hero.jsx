@@ -13,7 +13,7 @@ export const Hero = () => {
               md:text-left md:self-start
             "
         >
-          Welcome to Daraz.pk
+          Welcome to Buy-it
         </h2>
         <p
           className="
@@ -35,10 +35,10 @@ export const Hero = () => {
               md:text-left md:self-start
             "
         >
-          Daraz is the leading online marketplace
+          Buy-it is the leading online marketplace for shoes
         </p>
         <a
-          href="#"
+          href="#shop"
           className="
               bg-gradient-to-r
               from-red-600

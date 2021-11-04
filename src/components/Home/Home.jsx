@@ -6,6 +6,7 @@ import { CheckoutButton } from "../Cart/CheckoutButton"
 import { ProductList } from "../Product/ProductList"
 import { Hero } from "./Hero"
 import { Newsletter } from "./Newsletter"
+import { ProductCard } from "../Product/ProductCard"
 
 export const Home = () => {
   const [cart, setCart] = useState([])
@@ -35,9 +36,26 @@ export const Home = () => {
     return null
   })
 
+  console.log("Cart Items : ", cartItems)
   return (
     <>
       <Hero />
+      <section id="shop">
+        <ProductList title="Men's Collection" to="category/men">
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+        </ProductList>
+
+        <ProductList title="Women's Collection" to="category/women">
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+        </ProductList>
+      </section>
+
       <Newsletter />
     </>
   )
