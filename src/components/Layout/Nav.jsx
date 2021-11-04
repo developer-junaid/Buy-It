@@ -3,6 +3,9 @@ import React, { useContext } from "react"
 // Context
 import { CartStateContext } from "../../context/cartContext"
 
+// Gatsby
+import { Link } from "gatsby"
+
 export const Nav = () => {
   // Context
   const { cart } = useContext(CartStateContext)
@@ -24,20 +27,24 @@ export const Nav = () => {
         <h1 className="text-3xl text-gray-600 ml-2">Daraz</h1>
       </div>
       <div>
-        <a href="#" className="text-gray-600 hover:text-purple-600 p-4">
+        <Link to="/" className="text-gray-600 hover:text-purple-600 p-4">
           Home
-        </a>
-        <a href="#" className="text-gray-600 hover:text-purple-600 p-4">
-          Shop
-        </a>
-        <a href="#" className="text-gray-600 hover:text-purple-600 p-4">
-          Blog
-        </a>
-        <a href="#" className="text-gray-600 hover:text-purple-600 p-4">
-          Contact
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to="category/men"
+          className="text-gray-600 hover:text-purple-600 p-4"
+        >
+          Men
+        </Link>
+        <Link
+          to="category/women"
+          className="text-gray-600 hover:text-purple-600 p-4"
+        >
+          Women
+        </Link>
+
+        <Link
+          to="cart"
           className="
               bg-purple-600
               text-gray-50
@@ -62,7 +69,7 @@ export const Nav = () => {
             />
           </svg>
           Cart ({cart})
-        </a>
+        </Link>
       </div>
     </div>
   )
