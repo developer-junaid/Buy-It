@@ -1,9 +1,11 @@
 import React, { useState } from "react"
 
 // Components
-import { Layout } from "../../components/Layout"
-import { CheckoutButton } from "../../components/Cart/CheckoutButton"
-import { ProductList } from "../../components/Product/ProductList"
+import { Layout } from "../Layout/Layout"
+import { CheckoutButton } from "../Cart/CheckoutButton"
+import { ProductList } from "../Product/ProductList"
+import { Hero } from "./Hero"
+import { Newsletter } from "./Newsletter"
 
 export const Home = () => {
   const [cart, setCart] = useState([])
@@ -34,14 +36,9 @@ export const Home = () => {
   })
 
   return (
-    <Layout>
-      <div className="min-h-full flex flex-col bg-blue-50">
-        <h1 className="text-3xl text-center">
-          Products : Cart({cartItems.length})
-        </h1>
-        <ProductList setCart={setCart} cart={cart} />
-        <CheckoutButton cartItems={cartItems} />
-      </div>
-    </Layout>
+    <>
+      <Hero />
+      <Newsletter />
+    </>
   )
 }

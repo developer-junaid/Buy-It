@@ -1,9 +1,9 @@
 import React from "react"
 
 // Components
-import { Home } from "../components/Home"
+import { Home } from "../components"
 
 // Landing ( / )
-export default function Landing() {
+export default function HomePage() {
   return <Home />
 }

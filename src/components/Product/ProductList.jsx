@@ -23,8 +23,8 @@ export const ProductList = ({ cart, setCart }) => {
   }, [])
 
   return (
-    <div className="h-full">
-      <ul>
+    <div>
+      {/* <ul>
         {products.length !== 0 &&
           products.map(product => {
             return (
@@ -45,7 +45,7 @@ export const ProductList = ({ cart, setCart }) => {
               </div>
             )
           })}
-      </ul>
+      </ul> */}
     </div>
   )
 }
