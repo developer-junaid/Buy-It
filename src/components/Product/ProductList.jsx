@@ -1,23 +1,62 @@
 import React, { useContext, useEffect, useState } from "react"
 
-// Permalinks
-import { GET_PRODUCTS } from "../../constants/Permalinks"
-
-// Link
-import { Link } from "gatsby"
+// Context
 import { CartStateContext } from "../../context/cartContext"
+
+// Gatsby
+import { Link } from "gatsby"
+
+// GraphQl
+import { useStaticQuery, graphql } from "gatsby"
 
 export const ProductList = ({ children, title, to }) => {
   const { cart, setCart } = useContext(CartStateContext)
-
   const [products, setProducts] = useState([])
 
-  const getProducts = async () => {
-    const allProductsResponse = await fetch(GET_PRODUCTS)
-    const allProductsData = await allProductsResponse.json()
-    setProducts(allProductsData.products)
-  }
+  // Get Data
+  let allData = useStaticQuery(
+    graphql`
+      query GetProductsPrices {
+        prices: allStripePrice(
+          filter: { active: { eq: true }, product: { active: { eq: true } } }
+        ) {
+          edges {
+            node {
+              id
+              currency
+              product {
+                id
+                description
+                images
+                name
+              }
+              unit_amount_decimal
+            }
+          }
+        }
+      }
+    `
+  )
 
+  // Optimize Data
+  allData = allData.prices.edges
+  const productsData = []
+
+  allData.map(({ node: price }) => {
+    const product = price.product
+
+    productsData.push({
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      image: product.images[0],
+      price: parseFloat(price.unit_amount_decimal) / 100,
+      currency: price.currency,
+      priceId: price.id,
+    })
+  })
+
+  // Cart
   const addToCart = product => {
     let isEmpty = cart.length === 0
 
@@ -25,7 +64,8 @@ export const ProductList = ({ children, title, to }) => {
   }
 
   useEffect(() => {
-    getProducts()
+    setProducts(productsData)
+    console.log("ProductList: products ", productsData)
   }, [])
 
   return (
