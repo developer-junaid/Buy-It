@@ -1,21 +1,28 @@
-import React from "react"
+import React, { useContext } from "react"
 
-export const ProductCard = () => {
+// Gatsby
+import { Link } from "gatsby"
+
+// Context
+import { CartStateContext } from "../../context/cartContext"
+
+export const ProductCard = ({ product }) => {
+  const { cart, setCart } = useContext(CartStateContext)
+
+  // Cart
+  const addToCart = product => {
+    let isEmpty = cart.length === 0
+
+    isEmpty ? setCart([product]) : setCart([...cart, product])
+  }
+
   return (
     <div className="shadow-lg rounded-lg">
       <a href="#">
-        <img
-          src="https://github.com/itzpradip/tailwind-eshop-static-html/blob/master/images/products/men/product1.jpg?raw=true"
-          alt=""
-          className="rounded-t-lg"
-        />
+        <img src={product.image} alt={product.name} className="rounded-t-lg" />
       </a>
       <div className="p-5">
-        <h3>
-          <a href="#" className="font-medium">
-            T-Shirts
-          </a>
-        </h3>
+        <h3 className="font-medium">{product.name}</h3>
         <div className="flex my-3">
           <div className="bg-black h-5 w-5 rounded-full shadow-md mr-2"></div>
           <div className="bg-blue-800 h-5 w-5 rounded-full shadow-md mr-2"></div>
@@ -91,7 +98,7 @@ export const ProductCard = () => {
           </div>
         </div>
         <div className="flex flex-col xl:flex-row justify-between">
-          <a
+          <button
             className="
                 bg-gradient-to-r
                 from-red-600
@@ -105,7 +112,9 @@ export const ProductCard = () => {
                 flex flex-row
                 justify-center
               "
-            href="#"
+            onClick={() => {
+              addToCart(product)
+            }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -122,8 +131,8 @@ export const ProductCard = () => {
               />
             </svg>
             Add to cart
-          </a>
-          <a
+          </button>
+          <Link
             className="
                 bg-purple-600
                 rounded-full
@@ -135,7 +144,7 @@ export const ProductCard = () => {
                 flex flex-row
                 justify-center
               "
-            href="#"
+            to={`product/${product.id}`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +159,7 @@ export const ProductCard = () => {
               />
             </svg>
             View Details
-          </a>
+          </Link>
         </div>
       </div>
     </div>

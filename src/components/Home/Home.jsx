@@ -1,58 +1,82 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+
+// GraphQl
+import { useStaticQuery, graphql } from "gatsby"
 
 // Components
-import { Layout } from "../Layout/Layout"
-import { CheckoutButton } from "../Cart/CheckoutButton"
 import { ProductList } from "../Product/ProductList"
 import { Hero } from "./Hero"
 import { Newsletter } from "./Newsletter"
 import { ProductCard } from "../Product/ProductCard"
 
 export const Home = () => {
-  const [cart, setCart] = useState([])
+  const [products, setProducts] = useState([])
 
-  const cartItems = []
-  const pricesList = []
-  const sameItemsCount = {}
+  // Get Data
+  let allData = useStaticQuery(
+    graphql`
+      query GetProductsPrices {
+        prices: allStripePrice(
+          filter: { active: { eq: true }, product: { active: { eq: true } } }
+        ) {
+          edges {
+            node {
+              id
+              currency
+              product {
+                id
+                description
+                images
+                name
+              }
+              unit_amount_decimal
+            }
+          }
+        }
+      }
+    `
+  )
 
-  // Create array of prices
-  cart.map(item => {
-    pricesList.push(item.priceId)
+  // Optimize Data
+  allData = allData.prices.edges
+  const productsData = []
+
+  allData.map(({ node: price }) => {
+    const product = price.product
+
+    productsData.push({
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      image: product.images[0],
+      price: parseFloat(price.unit_amount_decimal) / 100,
+      currency: price.currency,
+      priceId: price.id,
+    })
+
     return null
   })
 
-  // Count no of same items
-  pricesList.map(price => {
-    sameItemsCount[price] = sameItemsCount[price]
-      ? sameItemsCount[price] + 1
-      : 1
+  useEffect(() => {
+    setProducts(productsData)
+  }, [])
 
-    return null
-  })
-
-  // Prepare cart items
-  Object.keys(sameItemsCount).map(key => {
-    cartItems.push({ price: key, quantity: sameItemsCount[key] })
-    return null
-  })
-
-  console.log("Cart Items : ", cartItems)
   return (
     <>
       <Hero />
       <section id="shop">
         <ProductList title="Men's Collection" to="category/men">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {products &&
+            products.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
         </ProductList>
 
         <ProductList title="Women's Collection" to="category/women">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {products &&
+            products.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
         </ProductList>
       </section>
 

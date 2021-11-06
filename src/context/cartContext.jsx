@@ -4,7 +4,7 @@ export const CartStateContext = createContext(null)
 
 // Layout
 export const CartContextProvider = ({ children }) => {
-  const [cart, setCart] = useState(0)
+  const [cart, setCart] = useState([])
   // console.log("cart ", cart)
 
   // Set or fetch cart

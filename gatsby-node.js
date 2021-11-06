@@ -28,8 +28,8 @@ exports.createPages = async function ({ actions, graphql }) {
     const product = price.product
 
     actions.createPage({
-      path: product.id,
-      component: require.resolve(`./src/templates/ProductDetails.js`),
+      path: `product/${product.id}`,
+      component: require.resolve(`./src/templates/ProductDetails.jsx`),
       context: { id: price.id },
     })
   })

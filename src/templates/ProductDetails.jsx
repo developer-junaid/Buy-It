@@ -4,10 +4,15 @@ import { graphql } from "gatsby"
 export default function ProductDetails({ data }) {
   //prod_KU4C192mG6l4Zh
   // console.log("DATA :", data)
-  console.log("Product details : ", data)
+  const product = data.price.product
+  const price = data.price
+  console.log("Product details : ", product)
   return (
     <div>
-      <h2>Product Details</h2>
+      <h2>{product.name}</h2>
+      <img src={product.images[0]} alt={product.name} />
+      <p>Price: ${price.unit_amount_decimal / 100}</p>
+      <p>{product.description}</p>
     </div>
   )
 }
