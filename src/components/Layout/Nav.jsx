@@ -31,13 +31,13 @@ export const Nav = () => {
           Home
         </Link>
         <Link
-          to="category/men"
+          to="/category/men"
           className="text-gray-600 hover:text-purple-600 p-4"
         >
           Men
         </Link>
         <Link
-          to="category/women"
+          to="/category/women"
           className="text-gray-600 hover:text-purple-600 p-4"
         >
           Women
