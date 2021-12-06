@@ -1,2 +1,3 @@
-export { CheckoutButton } from "./CheckoutButton/CheckoutButton"
-export { ProductList } from "./ProductList/ProductList"
+export { Home } from "../components/Home/Home"
+export { Cart } from "../components/Cart/Cart"
+export { Layout } from "../components/Layout/Layout"
