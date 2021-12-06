@@ -23,7 +23,7 @@ exports.createPages = async function ({ actions, graphql }) {
 
   const prices = data.prices.edges
 
-  // Createpages
+  // Createpages 'product'
   prices.forEach(({ node: price }) => {
     const product = price.product
 
@@ -33,4 +33,6 @@ exports.createPages = async function ({ actions, graphql }) {
       context: { id: price.id },
     })
   })
+
+  // Createpages 'category'
 }
