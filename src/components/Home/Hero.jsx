@@ -1,5 +1,8 @@
 import React from "react"
 
+// Image
+import soccerSVG from "../../../static/soccer.svg"
+
 export const Hero = () => {
   return (
     <div className="md:flex mt-20">
@@ -58,10 +61,11 @@ export const Hero = () => {
       </div>
 
       <div className="md:w-3/5 mt-7">
-        <img
+        {/* <img
           src="https://raw.githubusercontent.com/itzpradip/tailwind-eshop-static-html/bc1b37d73730b9e7804e91438246ce2f996cc435/images/hero-img.svg"
           alt="purchase"
-        />
+        /> */}
+        <img src={soccerSVG} alt="purchase" />
       </div>
     </div>
   )
