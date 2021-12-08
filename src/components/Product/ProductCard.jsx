@@ -18,10 +18,12 @@ export const ProductCard = ({ product }) => {
 
   return (
     <div className="shadow-lg rounded-lg">
-      <a href="#">
-        <img src={product.image} alt={product.name} className="rounded-t-lg" />
-      </a>
-      <div className="p-5">
+      <div
+        className="h-3/5 bg-cover md:bg-cover bg-center  bg-no-repeat rounded-t-lg"
+        style={{ backgroundImage: `url(${product.image})`, minHeight: "290px" }}
+      ></div>
+
+      <div className="p-4 h-2/5">
         <h3 className="font-medium">{product.name}</h3>
         <div className="flex my-3">
           <div className="bg-black h-5 w-5 rounded-full shadow-md mr-2"></div>
@@ -130,7 +132,6 @@ export const ProductCard = ({ product }) => {
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
               />
             </svg>
-            Add to cart
           </button>
           <Link
             className="

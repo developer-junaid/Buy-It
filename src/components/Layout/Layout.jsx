@@ -15,7 +15,7 @@ import { CartContextProvider } from "../../context/cartContext"
 export const Layout = ({ children }) => {
   return (
     <CartContextProvider>
-      <div className="container mx-auto p-5 flex flex-col justify-between min-h-screen">
+      <div className="container mx-auto p-5 max-w-screen-xl flex flex-col justify-between min-h-screen">
         <Helmet>
           <meta charSet="utf-8" />
           <title>Buy-it</title>

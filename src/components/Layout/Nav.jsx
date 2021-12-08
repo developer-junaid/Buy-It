@@ -24,23 +24,19 @@ export const Nav = () => {
               rounded-lg
             "
         ></div>
-        <h1 className="text-3xl text-gray-600 ml-2">Buy-it</h1>
+        <Link to="/" className="text-3xl text-gray-600 ml-2">
+          Buy-it
+        </Link>
       </div>
       <div>
         <Link to="/" className="text-gray-600 hover:text-purple-600 p-4">
           Home
         </Link>
         <Link
-          to="/category/men"
+          to="/products"
           className="text-gray-600 hover:text-purple-600 p-4"
         >
-          Men
-        </Link>
-        <Link
-          to="/category/women"
-          className="text-gray-600 hover:text-purple-600 p-4"
-        >
-          Women
+          Products
         </Link>
 
         <Link

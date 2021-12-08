@@ -65,14 +65,14 @@ export const Home = () => {
     <>
       <Hero />
       <section id="shop">
-        <ProductList title="Men's Collection" to="category/men">
+        <ProductList title="Trending Collection">
           {products &&
             products.map(product => (
               <ProductCard key={product.id} product={product} />
             ))}
         </ProductList>
 
-        <ProductList title="Women's Collection" to="category/women">
+        <ProductList title="Best Sellers">
           {products &&
             products.map(product => (
               <ProductCard key={product.id} product={product} />
