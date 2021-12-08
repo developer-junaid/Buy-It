@@ -44,8 +44,14 @@ export const Hero = () => {
           href="#shop"
           className="
               bg-gradient-to-r
-              from-red-600
-              to-pink-500
+              from-gray-800
+              to-blue-400
+              hover:from-blue-400
+              hover:to-gray-800
+              transition
+              duration-500
+              ease-in-out
+              
               rounded-full
               py-4
               px-8
@@ -61,10 +67,6 @@ export const Hero = () => {
       </div>
 
       <div className="md:w-3/5 mt-7">
-        {/* <img
-          src="https://raw.githubusercontent.com/itzpradip/tailwind-eshop-static-html/bc1b37d73730b9e7804e91438246ce2f996cc435/images/hero-img.svg"
-          alt="purchase"
-        /> */}
         <img src={soccerSVG} alt="purchase" />
       </div>
     </div>

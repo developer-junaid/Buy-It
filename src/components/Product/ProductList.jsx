@@ -3,8 +3,10 @@ import React from "react"
 export const ProductList = ({ children, title }) => {
   return (
     <div className="my-20">
-      <div className="flex justify-between">
-        <h2 className="text-3xl mb-6">{title}</h2>
+      <div className="flex flex-col">
+        <h2 className="text-3xl mb-6 border-l-4 border-blue-500 pl-4">
+          {title}
+        </h2>
       </div>
       <div
         className="
