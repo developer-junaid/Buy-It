@@ -47,22 +47,15 @@ export const Nav = () => {
         <Link
           to="/cart"
           className="
-              bg-gray-700
-              text-gray-50
-              hover:bg-gray-800
-              py-4
-              rounded-2xl
-              px-4
-               transition-all
+              
+          text-gray-600 hover:text-blue-600 p-4
             "
-          style={{ border: "2px solid transparent" }}
-          activeStyle={{ border: "2px solid blue" }}
+          activeStyle={{ color: "blue" }}
         >
           <span className="relative inline-block">
-            Cart
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 sm:h-6 sm:w-6 inline-block ml-1"
+              className="h-5 w-5 sm:h-6 sm:w-6 inline-block"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
