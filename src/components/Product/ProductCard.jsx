@@ -25,13 +25,7 @@ export const ProductCard = ({ product }) => {
 
       <div className="p-4 h-2/5">
         <h3 className="font-medium">{product.name}</h3>
-        <div className="flex my-3">
-          <div className="bg-black h-5 w-5 rounded-full shadow-md mr-2"></div>
-          <div className="bg-blue-800 h-5 w-5 rounded-full shadow-md mr-2"></div>
-          <div className="bg-white h-5 w-5 rounded-full shadow-md mr-2"></div>
-          <div className="bg-red-800 h-5 w-5 rounded-full shadow-md mr-2"></div>
-          <div className="bg-green-700 h-5 w-5 rounded-full shadow-md mr-2"></div>
-        </div>
+
         <div className="flex my-3">
           <div
             className="
@@ -44,7 +38,7 @@ export const ProductCard = ({ product }) => {
                 mr-2
               "
           >
-            S
+            40
           </div>
           <div
             className="
@@ -57,7 +51,7 @@ export const ProductCard = ({ product }) => {
                 mr-2
               "
           >
-            M
+            41
           </div>
           <div
             className="
@@ -70,7 +64,7 @@ export const ProductCard = ({ product }) => {
                 mr-2
               "
           >
-            L
+            42
           </div>
           <div
             className="
@@ -83,7 +77,7 @@ export const ProductCard = ({ product }) => {
                 mr-2
               "
           >
-            XL
+            43
           </div>
           <div
             className="
@@ -96,7 +90,20 @@ export const ProductCard = ({ product }) => {
                 mr-2
               "
           >
-            XXL
+            44
+          </div>
+          <div
+            className="
+                border-2 border-gray-300
+                text-gray-400
+                rounded-md
+                text-xs
+                py-1
+                px-2
+                mr-2
+              "
+          >
+            45
           </div>
         </div>
         <div className="flex flex-col xl:flex-row justify-between">

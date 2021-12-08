@@ -28,6 +28,9 @@ export const Home = () => {
                 description
                 images
                 name
+                metadata {
+                  tag
+                }
               }
               unit_amount_decimal
             }
@@ -52,6 +55,7 @@ export const Home = () => {
       price: parseFloat(price.unit_amount_decimal) / 100,
       currency: price.currency,
       priceId: price.id,
+      tag: product.metadata.tag,
     })
 
     return null
@@ -67,16 +71,22 @@ export const Home = () => {
       <section id="shop">
         <ProductList title="Trending Collection">
           {products &&
-            products.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+            products.map(product => {
+              if (product.tag === "trending") {
+                return <ProductCard key={product.id} product={product} />
+              }
+              return null
+            })}
         </ProductList>
 
         <ProductList title="Best Sellers">
           {products &&
-            products.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+            products.map(product => {
+              if (product?.tag === "best-seller") {
+                return <ProductCard key={product.id} product={product} />
+              }
+              return null
+            })}
         </ProductList>
       </section>
 

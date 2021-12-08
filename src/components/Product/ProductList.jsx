@@ -1,8 +1,5 @@
 import React from "react"
 
-// Gatsby
-import { Link } from "gatsby"
-
 export const ProductList = ({ children, title }) => {
   return (
     <div className="my-20">
