@@ -71,7 +71,6 @@ export const Nav = () => {
               {cart.length}
             </span>
           </span>
-          {/* Cart () */}
         </Link>
       </div>
     </div>
