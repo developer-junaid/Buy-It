@@ -6,8 +6,12 @@ import { Link } from "gatsby"
 // Context
 import { CartStateContext } from "../../context/cartContext"
 
+// Components
+import { SizeCard } from "./SizeCard/SizeCard"
+
 export const ProductCard = ({ product }) => {
   const { cart, setCart } = useContext(CartStateContext)
+  const sizes = [40, 41, 42, 43, 44, 45]
 
   // Cart
   const addToCart = product => {
@@ -27,97 +31,22 @@ export const ProductCard = ({ product }) => {
         <h3 className="font-medium">{product.name}</h3>
 
         <div className="flex my-3">
-          <div
-            className="
-                border-2 border-gray-300
-                text-gray-400
-                rounded-md
-                text-xs
-                py-1
-                px-2
-                mr-2
-              "
-          >
-            40
-          </div>
-          <div
-            className="
-                border-2 border-gray-300
-                text-gray-400
-                rounded-md
-                text-xs
-                py-1
-                px-2
-                mr-2
-              "
-          >
-            41
-          </div>
-          <div
-            className="
-                border-2 border-gray-300
-                text-gray-400
-                rounded-md
-                text-xs
-                py-1
-                px-2
-                mr-2
-              "
-          >
-            42
-          </div>
-          <div
-            className="
-                border-2 border-gray-300
-                text-gray-400
-                rounded-md
-                text-xs
-                py-1
-                px-2
-                mr-2
-              "
-          >
-            43
-          </div>
-          <div
-            className="
-                border-2 border-gray-300
-                text-gray-400
-                rounded-md
-                text-xs
-                py-1
-                px-2
-                mr-2
-              "
-          >
-            44
-          </div>
-          <div
-            className="
-                border-2 border-gray-300
-                text-gray-400
-                rounded-md
-                text-xs
-                py-1
-                px-2
-                mr-2
-              "
-          >
-            45
-          </div>
+          {sizes.map(size => (
+            <SizeCard number={size} />
+          ))}
         </div>
         <div className="flex flex-col xl:flex-row justify-between">
           <button
             className="
                 bg-gradient-to-r
-                from-red-600
-                to-pink-500
+                from-blue-400
+                to-gray-800
                 rounded-full
                 py-2
                 px-4
                 my-2
                 text-sm text-white
-                hover:bg-pink-600 hover:from-pink-600 hover:to-pink-600
+               hover:from-gray-800 hover:to-gray-800
                 flex flex-row
                 justify-center
               "
@@ -142,13 +71,13 @@ export const ProductCard = ({ product }) => {
           </button>
           <Link
             className="
-                bg-purple-600
+                bg-gray-700
                 rounded-full
                 py-2
                 px-4
                 my-2
                 text-sm text-white
-                hover:bg-purple-700
+                hover:bg-gray-800
                 flex flex-row
                 justify-center
               "

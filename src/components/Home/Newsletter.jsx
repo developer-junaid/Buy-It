@@ -8,9 +8,9 @@ export const Newsletter = () => {
             lg:w-3/5
             w-full
             bg-gradient-to-r
-            from-black
-            to-purple-900
-            lg:from-black lg:via-purple-900 lg:to-transparent
+            from-gray-600
+            to-blue-900
+            lg:from-gray-900 lg:via-blue-500 lg:to-transparent
             rounded-lg
             text-gray-100
             p-12
@@ -41,7 +41,10 @@ export const Newsletter = () => {
                   mb-4
                 "
             />
-            <button type="submit" className="bg-red-600 rounded-lg w-full py-3">
+            <button
+              type="submit"
+              className="bg-red-600 hover:bg-red-700 rounded-lg w-full py-3"
+            >
               Subscribe
             </button>
           </div>
