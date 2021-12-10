@@ -5,19 +5,19 @@ import { CartProduct } from "./CartProduct"
 
 export const CartProducts = () => {
   return (
-    <table class="w-full text-sm lg:text-base" cellspacing="0">
+    <table className="w-full text-sm lg:text-base" cellSpacing="0">
       <thead>
-        <tr class="h-12 uppercase">
-          <th class="hidden md:table-cell"></th>
-          <th class="text-left">Product</th>
-          <th class="lg:text-right text-left pl-5 lg:pl-0">
-            <span class="lg:hidden" title="Quantity">
+        <tr className="h-12 uppercase">
+          <th className="hidden md:table-cell"></th>
+          <th className="text-left">Product</th>
+          <th className="lg:text-right text-left pl-5 lg:pl-0">
+            <span className="lg:hidden" title="Quantity">
               Qtd
             </span>
-            <span class="hidden lg:inline">Quantity</span>
+            <span className="hidden lg:inline">Quantity</span>
           </th>
-          <th class="hidden text-right md:table-cell">Unit price</th>
-          <th class="text-right">Total price</th>
+          <th className="hidden text-right md:table-cell">Unit price</th>
+          <th className="text-right">Total price</th>
         </tr>
       </thead>
       <tbody>
