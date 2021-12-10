@@ -3,7 +3,7 @@ import React from "react"
 // Components
 import { CartProduct } from "./CartProduct"
 
-export const CartProducts = () => {
+export const CartProducts = ({ products }) => {
   return (
     <table className="w-full text-sm lg:text-base" cellSpacing="0">
       <thead>
@@ -21,23 +21,18 @@ export const CartProducts = () => {
         </tr>
       </thead>
       <tbody>
-        <CartProduct
-          name="Earphone"
-          unitPrice={10}
-          imageSrc="https://limg.app/i/Calm-Cormorant-Catholic-Pinball-Blaster-yM4oub.jpeg"
-        />
-
-        <CartProduct
-          name="Tesla Model 3"
-          unitPrice={49600}
-          imageSrc="https://limg.app/i/Cute-Constrictor-Super-Sexy-Military-Enforcer-W7mvBp.png"
-        />
-
-        <CartProduct
-          name="Bic 4 colour pen"
-          unitPrice={1.5}
-          imageSrc="https://limg.app/i/Successful-Spider-Biblical-Mutant---Total-War-lKoE7D.jpeg"
-        />
+        {products &&
+          products.map(product => {
+            return (
+              <CartProduct
+                key={product.id}
+                name={product.name}
+                unitPrice={product.price}
+                imageSrc={product.image}
+                quantity={product.quantity}
+              />
+            )
+          })}
       </tbody>
     </table>
   )

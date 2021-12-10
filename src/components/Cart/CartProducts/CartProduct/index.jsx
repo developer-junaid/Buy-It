@@ -1,6 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 
-export const CartProduct = ({ name, unitPrice, imageSrc }) => {
+export const CartProduct = ({ name, unitPrice, imageSrc, quantity }) => {
+  const [productQuantity, setProductQuantity] = useState(quantity)
+
+  const handleChange = event => {
+    setProductQuantity(event.target.value)
+  }
+
   return (
     <tr>
       <td className="hidden pb-4 md:table-cell">
@@ -23,7 +29,8 @@ export const CartProduct = ({ name, unitPrice, imageSrc }) => {
           <div className="relative flex flex-row w-full h-8">
             <input
               type="number"
-              defaultValue="2"
+              value={productQuantity}
+              onChange={handleChange}
               className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black"
             />
           </div>
@@ -33,7 +40,9 @@ export const CartProduct = ({ name, unitPrice, imageSrc }) => {
         <span className="text-sm lg:text-base font-medium">{unitPrice}$</span>
       </td>
       <td className="text-right">
-        <span className="text-sm lg:text-base font-medium">20.00€</span>
+        <span className="text-sm lg:text-base font-medium">
+          {quantity * unitPrice}$
+        </span>
       </td>
     </tr>
   )

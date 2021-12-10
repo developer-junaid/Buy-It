@@ -32,7 +32,7 @@ export const ProductCard = ({ product }) => {
 
         <div className="flex my-3">
           {sizes.map(size => (
-            <SizeCard number={size} />
+            <SizeCard key={size} number={size} />
           ))}
         </div>
         <div className="flex flex-col xl:flex-row justify-between">
