@@ -11,6 +11,7 @@ import { SizeCard } from "./SizeCard/SizeCard"
 
 // Utils
 import { countProducts } from "../../utils/countProducts"
+import { Snackbar } from "../../components/Snackbar"
 
 export const ProductCard = ({ product }) => {
   const { cart, setCart } = useContext(CartStateContext)
@@ -80,7 +81,7 @@ export const ProductCard = ({ product }) => {
               addToCart(product)
             }}
           >
-            <span class="absolute md:visible w-64 h-40 mt-12 lg:group-hover:-rotate-45 lg:group-hover:-mt-24 transition-all ease-linear duration-500 bg-gray-800 left-0 top-0"></span>
+            <span className="absolute md:visible w-64 h-40 mt-12 lg:group-hover:-rotate-45 lg:group-hover:-mt-24 transition-all ease-linear duration-500 bg-gray-800 left-0 top-0"></span>
 
             <span className="relative flex">
               <svg
@@ -102,15 +103,15 @@ export const ProductCard = ({ product }) => {
           </button>
 
           <Link
-            class="bg-gray-700 rounded-full py-2 px-4 my-2 group relative text-sm text-white overflow-hidden  flex flex-row justify-center"
+            className="bg-gray-700 rounded-full py-2 px-4 my-2 group relative text-sm text-white overflow-hidden  flex flex-row justify-center"
             to={`product/${product.id}`}
           >
-            <span class="absolute w-64 h-40 mt-12 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-linear duration-500 bg-gray-800 left-0 top-0"></span>
+            <span className="absolute w-64 h-40 mt-12 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-linear duration-500 bg-gray-800 left-0 top-0"></span>
 
-            <span class="relative flex">
+            <span className="relative flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 mr-1"
+                className="h-5 w-5 mr-1"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -123,34 +124,6 @@ export const ProductCard = ({ product }) => {
               View Details
             </span>
           </Link>
-          {/* <Link
-            className="
-                bg-gray-700
-                rounded-full
-                py-2
-                px-4
-                my-2
-                text-sm text-white
-                hover:bg-gray-800
-                flex flex-row
-                justify-center
-              "
-            to={`product/${product.id}`}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-1"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-            View Details
-          </Link> */}
         </div>
       </div>
     </div>

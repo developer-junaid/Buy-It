@@ -1,10 +1,27 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 
-export const CartProduct = ({ name, unitPrice, imageSrc, quantity }) => {
+// Context
+
+import { CartStateContext } from "../../../../context/cartContext"
+export const CartProduct = ({ name, unitPrice, imageSrc, quantity, id }) => {
   const [productQuantity, setProductQuantity] = useState(quantity)
+
+  const { cart, setCart } = useContext(CartStateContext)
+
+  const indexOfProduct = cart.findIndex(prod => prod.id === id)
 
   const handleChange = event => {
     setProductQuantity(event.target.value)
+
+    const updatedProduct = Object.assign({}, cart[indexOfProduct], {
+      quantity: event.target.value,
+    })
+
+    setCart([
+      ...cart.slice(0, indexOfProduct),
+      updatedProduct,
+      ...cart.slice(indexOfProduct + 1),
+    ])
   }
 
   return (
