@@ -46,23 +46,22 @@ export const Hero = () => {
               bg-gradient-to-r
               from-gray-800
               to-blue-400
-              hover:from-blue-400
-              hover:to-gray-800
-              transition
-              duration-500
-              ease-in-out
-              
+              relative
               rounded-full
               py-4
               px-8
+               overflow-hidden
               text-gray-50
               uppercase
               text-xl
               md:self-start
               my-5
+              group
             "
         >
-          Shop Now
+          <span class="absolute w-64 h-48 mt-16 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-linear duration-500 bg-gray-800 left-0 top-0"></span>
+
+          <span className="relative">Shop Now</span>
         </a>
       </div>
 

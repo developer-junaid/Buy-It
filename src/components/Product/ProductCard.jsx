@@ -58,7 +58,7 @@ export const ProductCard = ({ product }) => {
             <SizeCard key={size} number={size} />
           ))}
         </div>
-        <div className="flex flex-col xl:flex-row justify-between">
+        <div className="flex flex-col lg:flex-row justify-between">
           <button
             className="
                 bg-gradient-to-r
@@ -66,33 +66,64 @@ export const ProductCard = ({ product }) => {
                 to-gray-800
                 rounded-full
                 py-2
-                px-4
+                2xl:px-4
+                sm:px-10
                 my-2
                 text-sm text-white
-               hover:from-gray-800 hover:to-gray-800
                 flex flex-row
+                relative
+                overflow-hidden
+                group
                 justify-center
               "
             onClick={() => {
               addToCart(product)
             }}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
+            <span class="absolute md:visible w-64 h-40 mt-12 lg:group-hover:-rotate-45 lg:group-hover:-mt-24 transition-all ease-linear duration-500 bg-gray-800 left-0 top-0"></span>
+
+            <span className="relative flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 mr-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+              </svg>
+              <span className="visible lg:hidden">Add to cart</span>
+            </span>
           </button>
+
           <Link
+            class="bg-gray-700 rounded-full py-2 px-4 my-2 group relative text-sm text-white overflow-hidden  flex flex-row justify-center"
+            to={`product/${product.id}`}
+          >
+            <span class="absolute w-64 h-40 mt-12 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-linear duration-500 bg-gray-800 left-0 top-0"></span>
+
+            <span class="relative flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-1"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              View Details
+            </span>
+          </Link>
+          {/* <Link
             className="
                 bg-gray-700
                 rounded-full
@@ -119,7 +150,7 @@ export const ProductCard = ({ product }) => {
               />
             </svg>
             View Details
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>
