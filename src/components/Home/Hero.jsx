@@ -59,7 +59,7 @@ export const Hero = () => {
               group
             "
         >
-          <span class="absolute w-64 h-48 mt-16 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-linear duration-500 bg-gray-800 left-0 top-0"></span>
+          <span className="absolute w-64 h-48 mt-16 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-linear duration-500 bg-gray-800 left-0 top-0"></span>
 
           <span className="relative">Shop Now</span>
         </a>

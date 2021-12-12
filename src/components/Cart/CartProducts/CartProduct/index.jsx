@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react"
 
 // Context
-
 import { CartStateContext } from "../../../../context/cartContext"
+
 export const CartProduct = ({ name, unitPrice, imageSrc, quantity, id }) => {
   const [productQuantity, setProductQuantity] = useState(quantity)
 
