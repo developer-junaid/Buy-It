@@ -9,6 +9,9 @@ import { CartStateContext } from "../../context/cartContext"
 // Components
 import { SizeCard } from "./SizeCard/SizeCard"
 
+// Utils
+import { countProducts } from "../../utils/countProducts"
+
 export const ProductCard = ({ product }) => {
   const { cart, setCart } = useContext(CartStateContext)
   const sizes = [40, 41, 42, 43, 44, 45]
@@ -17,7 +20,27 @@ export const ProductCard = ({ product }) => {
   const addToCart = product => {
     let isEmpty = cart.length === 0
 
-    isEmpty ? setCart([product]) : setCart([...cart, product])
+    if (isEmpty) {
+      setCart([{ ...product, quantity: 1 }])
+    } else {
+      const countedProducts = countProducts(cart)
+      const count = countedProducts.filter(item => item.id === product.id)
+
+      if (count.length === 0) {
+        setCart([...cart, { ...product, quantity: 1 }])
+      } else {
+        const indexOfProduct = cart.findIndex(prod => prod.id === product.id)
+        const updatedProduct = Object.assign({}, cart[indexOfProduct], {
+          quantity: cart[indexOfProduct].quantity + 1,
+        })
+
+        setCart([
+          ...cart.slice(0, indexOfProduct),
+          updatedProduct,
+          ...cart.slice(indexOfProduct + 1),
+        ])
+      }
+    }
   }
 
   return (
