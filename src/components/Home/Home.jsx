@@ -1,69 +1,14 @@
-import React, { useEffect, useState } from "react"
-
-// GraphQl
-import { useStaticQuery, graphql } from "gatsby"
+import React, { useContext } from "react"
 
 // Components
 import { ProductList } from "components"
 import { Hero } from "./Hero"
 import { Newsletter } from "./Newsletter"
 import { ProductCard } from "components"
+import { ProductsStateContext } from "context/productsContext"
 
 export const Home = () => {
-  const [products, setProducts] = useState([])
-
-  // Get Data
-  let allData = useStaticQuery(
-    graphql`
-      query GetProductsPrices {
-        prices: allStripePrice(
-          filter: { active: { eq: true }, product: { active: { eq: true } } }
-        ) {
-          edges {
-            node {
-              id
-              currency
-              product {
-                id
-                description
-                images
-                name
-                metadata {
-                  tag
-                }
-              }
-              unit_amount_decimal
-            }
-          }
-        }
-      }
-    `
-  )
-
-  // Optimize Data
-  allData = allData.prices.edges
-  const productsData = []
-
-  allData.map(({ node: price }) => {
-    const product = price.product
-
-    productsData.push({
-      id: product.id,
-      name: product.name,
-      description: product.description,
-      image: product.images[0],
-      price: parseFloat(price.unit_amount_decimal) / 100,
-      currency: price.currency,
-      priceId: price.id,
-      tag: product.metadata.tag,
-    })
-
-    return null
-  })
-
-  useEffect(() => {
-    setProducts(productsData)
-  }, [])
+  const { products } = useContext(ProductsStateContext)
 
   return (
     <>
