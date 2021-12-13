@@ -1,7 +1,7 @@
 import React from "react"
 
 // Components
-import { CartProduct } from "./CartProduct"
+import { CartProduct } from "./CartProduct/CartProduct"
 
 export const CartProducts = ({ products }) => {
   return (

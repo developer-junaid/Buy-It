@@ -1,9 +1,9 @@
 import React, { useContext } from "react"
 
 // Components
-import { CartProducts } from "./CartProducts"
-import { DeliveryInstructions } from "./DeliveryInstructions"
-import { OrderDetails } from "./OrderDetails"
+import { CartProducts } from "./CartProducts/CartProducts"
+import { DeliveryInstructions } from "./DeliveryInstructions/DeliveryInstructions"
+import { OrderDetails } from "./OrderDetails/OrderDetails"
 
 // Context
 import { CartStateContext } from "../../context/cartContext"
