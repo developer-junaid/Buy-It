@@ -14,12 +14,22 @@ const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY)
 export const OrderDetails = () => {
   const { cart } = useContext(CartStateContext)
 
+  let subtotal = 0
+  let total = 0
+
+  // Calculate total and subtotal
+  cart.map(product => {
+    subtotal += product.price * product.quantity
+    total += product.price * product.quantity
+  })
+
   const redirectToCheckout = async () => {
     // Cart Items
     const cartItems = []
 
     cart.map(product => {
       cartItems.push({ price: product.priceId, quantity: product.quantity })
+      subtotal += product.unit_price * product.quantity
     })
 
     const stripe = await stripePromise
@@ -53,48 +63,16 @@ export const OrderDetails = () => {
             Subtotal
           </div>
           <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-            148,827.53€
+            {subtotal}$
           </div>
         </div>
-        <div className="flex justify-between pt-4 border-b">
-          <div className="flex lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-gray-800">
-            <form action="" method="POST">
-              <button type="submit" className="mr-2 mt-1 lg:mt-2">
-                <svg
-                  aria-hidden="true"
-                  data-prefix="far"
-                  data-icon="trash-alt"
-                  className="w-4 text-red-600 hover:text-red-800"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 448 512"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M268 416h24a12 12 0 0012-12V188a12 12 0 00-12-12h-24a12 12 0 00-12 12v216a12 12 0 0012 12zM432 80h-82.41l-34-56.7A48 48 0 00274.41 0H173.59a48 48 0 00-41.16 23.3L98.41 80H16A16 16 0 000 96v16a16 16 0 0016 16h16v336a48 48 0 0048 48h288a48 48 0 0048-48V128h16a16 16 0 0016-16V96a16 16 0 00-16-16zM171.84 50.91A6 6 0 01177 48h94a6 6 0 015.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0012-12V188a12 12 0 00-12-12h-24a12 12 0 00-12 12v216a12 12 0 0012 12z"
-                  />
-                </svg>
-              </button>
-            </form>
-            Coupon "90off"
-          </div>
-          <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-green-700">
-            -133,944.77€
-          </div>
-        </div>
+
         <div className="flex justify-between pt-4 border-b">
           <div className="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-            New Subtotal
+            Delivery
           </div>
           <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-            14,882.75€
-          </div>
-        </div>
-        <div className="flex justify-between pt-4 border-b">
-          <div className="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-            Tax
-          </div>
-          <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-            2,976.55€
+            Free
           </div>
         </div>
         <div className="flex justify-between pt-4 border-b">
@@ -102,7 +80,7 @@ export const OrderDetails = () => {
             Total
           </div>
           <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-            17,859.3€
+            {total}$
           </div>
         </div>
         <button

@@ -3,7 +3,7 @@ import React from "react"
 export const DeliveryInstructions = () => {
   return (
     <>
-      <div className="p-4 mt-6 bg-gray-100 rounded-full">
+      <div className="p-4 bg-gray-100 rounded-full">
         <h1 className="ml-2 font-bold uppercase">Instruction for seller</h1>
       </div>
       <div className="p-4">

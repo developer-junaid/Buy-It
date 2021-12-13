@@ -2,7 +2,6 @@ import React, { useContext } from "react"
 
 // Components
 import { CartProducts } from "./CartProducts"
-import { CouponCode } from "./CouponCode"
 import { DeliveryInstructions } from "./DeliveryInstructions"
 import { OrderDetails } from "./OrderDetails"
 
@@ -28,7 +27,6 @@ export const Cart = () => {
           <hr className="pb-6 mt-6" />
           <div className="my-4 mt-6 -mx-2 lg:flex">
             <div className="lg:px-2 lg:w-1/2">
-              <CouponCode />
               <DeliveryInstructions />
             </div>
             <OrderDetails />
