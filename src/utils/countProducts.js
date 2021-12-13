@@ -5,6 +5,8 @@ export const countProducts = products => {
   // Make product Ids Array
   products.map(product => {
     productIds.push(product.id)
+
+    return null
   })
 
   // Make uniqueIds array
@@ -20,6 +22,8 @@ export const countProducts = products => {
       id,
       count,
     })
+
+    return null
   })
 
   return productsCount

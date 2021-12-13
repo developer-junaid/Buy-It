@@ -21,6 +21,8 @@ export const OrderDetails = () => {
   cart.map(product => {
     subtotal += product.price * product.quantity
     total += product.price * product.quantity
+
+    return null
   })
 
   const redirectToCheckout = async () => {
@@ -30,6 +32,8 @@ export const OrderDetails = () => {
     cart.map(product => {
       cartItems.push({ price: product.priceId, quantity: product.quantity })
       subtotal += product.unit_price * product.quantity
+
+      return null
     })
 
     const stripe = await stripePromise

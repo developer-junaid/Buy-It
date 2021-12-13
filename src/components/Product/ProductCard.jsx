@@ -11,7 +11,6 @@ import { SizeCard } from "./SizeCard/SizeCard"
 
 // Utils
 import { countProducts } from "../../utils/countProducts"
-import { Snackbar } from "../../components/Snackbar"
 
 export const ProductCard = ({ product }) => {
   const { cart, setCart } = useContext(CartStateContext)
