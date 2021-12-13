@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 // Components
-import { ProductList } from "../Product/ProductList"
+import { ProductList } from "components"
 import { Hero } from "./Hero"
 import { Newsletter } from "./Newsletter"
-import { ProductCard } from "../Product/ProductCard"
+import { ProductCard } from "components"
 
 export const Home = () => {
   const [products, setProducts] = useState([])

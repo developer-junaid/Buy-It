@@ -1,10 +1,10 @@
 import React, { useContext } from "react"
 
 // Context
-import { CartStateContext } from "../../../context/cartContext"
+import { CartStateContext } from "context/cartContext"
 
 // Checkout
-import { CHECKOUT } from "../../../constants/Permalinks"
+import { CHECKOUT } from "constants/Permalinks"
 
 // Stripe
 import { loadStripe } from "@stripe/stripe-js"

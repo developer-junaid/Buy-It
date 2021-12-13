@@ -4,13 +4,13 @@ import React, { useContext } from "react"
 import { Link } from "gatsby"
 
 // Context
-import { CartStateContext } from "../../context/cartContext"
+import { CartStateContext } from "context/cartContext"
 
 // Components
 import { SizeCard } from "./SizeCard/SizeCard"
 
 // Utils
-import { countProducts } from "../../utils/countProducts"
+import { countProducts } from "utils/countProducts"
 
 export const ProductCard = ({ product }) => {
   const { cart, setCart } = useContext(CartStateContext)

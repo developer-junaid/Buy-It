@@ -2,14 +2,14 @@ import React from "react"
 
 // Meta
 import { Helmet } from "react-helmet"
-import titleIcon from "../../../static/cart.svg"
+import titleIcon from "assets/cart.svg"
 
 // Components
 import { Footer } from "./Footer"
 import { Nav } from "./Nav"
 
 // Context
-import { CartContextProvider } from "../../context/cartContext"
+import { CartContextProvider } from "context/cartContext"
 
 // Layout
 export const Layout = ({ children }) => {
@@ -23,7 +23,7 @@ export const Layout = ({ children }) => {
           <link rel="canonical" href="#" />
           <link
             rel="shortcut icon"
-            href="../../static/cart.svg"
+            href="assets/cart.svg"
             type="image/x-icon"
           />
           <meta

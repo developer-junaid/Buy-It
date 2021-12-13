@@ -6,7 +6,7 @@ import { DeliveryInstructions } from "./DeliveryInstructions/DeliveryInstruction
 import { OrderDetails } from "./OrderDetails/OrderDetails"
 
 // Context
-import { CartStateContext } from "../../context/cartContext"
+import { CartStateContext } from "context/cartContext"
 
 export const Cart = () => {
   // Context

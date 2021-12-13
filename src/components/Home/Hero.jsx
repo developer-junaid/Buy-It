@@ -1,7 +1,7 @@
 import React from "react"
 
 // Image
-import soccerSVG from "../../../static/soccer.svg"
+import soccerSVG from "assets/soccer.svg"
 
 export const Hero = () => {
   return (
