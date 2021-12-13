@@ -51,7 +51,10 @@ export const ProductCard = ({ product }) => {
       ></div>
 
       <div className="p-4 h-2/5">
-        <h3 className="font-medium">{product.name}</h3>
+        <div>
+          <h3 className="font-medium">{product.name}</h3>
+          <h3 className="font-medium text-gray-600">${product.price}</h3>
+        </div>
 
         <div className="flex my-3">
           {sizes.map(size => (

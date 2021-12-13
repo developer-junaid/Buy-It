@@ -11,9 +11,6 @@ export const SizeCard = ({ number }) => {
                 py-1
                 px-2
                 mr-2
-                cursor-pointer
-                transition
-                hover:border-gray-400
               "
     >
       {number}
