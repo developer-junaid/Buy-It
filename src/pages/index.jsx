@@ -4,6 +4,6 @@ import React from "react"
 import { Home } from "components"
 
 // Landing ( / )
-export default function HomePage() {
-  return <Home />
-}
+const HomePage = () => <Home />
+
+export default HomePage

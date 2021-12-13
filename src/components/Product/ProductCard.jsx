@@ -19,7 +19,14 @@ export const ProductCard = ({ product }) => {
   const { cart, setCart } = useContext(CartStateContext)
   const [added, setAdded] = useState(false)
 
-  const sizes = [40, 41, 42, 43, 44, 45]
+  const sizes = [
+    { name: 40, inStock: false },
+    { name: 41, inStock: true },
+    { name: 42, inStock: true },
+    { name: 43, inStock: false },
+    { name: 44, inStock: true },
+    { name: 45, inStock: true },
+  ]
 
   // Cart
   const addToCart = product => {
@@ -82,7 +89,7 @@ export const ProductCard = ({ product }) => {
 
         <div className="flex my-3">
           {sizes.map(size => (
-            <SizeCard key={size} number={size} />
+            <SizeCard key={size.name} number={size.name} />
           ))}
         </div>
         <div className="flex flex-col lg:flex-row justify-between">

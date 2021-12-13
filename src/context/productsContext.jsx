@@ -26,6 +26,9 @@ export const ProductsContextProvider = ({ children }) => {
                 name
                 metadata {
                   tag
+                  bottomImg
+                  leftImg
+                  rightImg
                 }
               }
               unit_amount_decimal
@@ -52,6 +55,9 @@ export const ProductsContextProvider = ({ children }) => {
       currency: price.currency,
       priceId: price.id,
       tag: product.metadata.tag,
+      bottomImg: product.metadata.bottomImg,
+      leftImg: product.metadata.leftImg,
+      rightImg: product.metadata.rightImg,
     })
 
     return null

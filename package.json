@@ -14,7 +14,10 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.2",
+    "@heroicons/react": "^1.0.5",
     "@stripe/stripe-js": "^1.20.3",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
     "gatsby": "^4.0.1",
