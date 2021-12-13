@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 
 // Gatsby
 import { Link } from "gatsby"
@@ -9,11 +9,16 @@ import { CartStateContext } from "context/cartContext"
 // Components
 import { SizeCard } from "./SizeCard/SizeCard"
 
+// Sweetalerts
+import Swal from "sweetalert2"
+
 // Utils
-import { countProducts } from "utils/countProducts"
+import { AddToCartIcon, ArrowIcon, RemoveFromCartIcon } from "utils/Icons"
 
 export const ProductCard = ({ product }) => {
   const { cart, setCart } = useContext(CartStateContext)
+  const [added, setAdded] = useState(false)
+
   const sizes = [40, 41, 42, 43, 44, 45]
 
   // Cart
@@ -22,26 +27,45 @@ export const ProductCard = ({ product }) => {
 
     if (isEmpty) {
       setCart([{ ...product, quantity: 1 }])
+      setAdded(true)
     } else {
-      const countedProducts = countProducts(cart)
-      const count = countedProducts.filter(item => item.id === product.id)
-
-      if (count.length === 0) {
-        setCart([...cart, { ...product, quantity: 1 }])
-      } else {
-        const indexOfProduct = cart.findIndex(prod => prod.id === product.id)
-        const updatedProduct = Object.assign({}, cart[indexOfProduct], {
-          quantity: cart[indexOfProduct].quantity + 1,
-        })
-
-        setCart([
-          ...cart.slice(0, indexOfProduct),
-          updatedProduct,
-          ...cart.slice(indexOfProduct + 1),
-        ])
-      }
+      setCart([...cart, { ...product, quantity: 1 }])
+      setAdded(true)
     }
+
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Product added to cart",
+      showConfirmButton: false,
+      timer: 1500,
+    })
   }
+
+  const removeFromCart = product => {
+    const filteredArray = cart.filter(item => item.id !== product.id)
+    setCart(filteredArray)
+    setAdded(false)
+
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Product removed from cart",
+      showConfirmButton: false,
+      timer: 1500,
+    })
+  }
+
+  useEffect(() => {
+    // Check if already added in cart or not
+    const filteredArray = cart.filter(item => item.id === product.id)
+
+    if (filteredArray[0]) {
+      setAdded(true)
+    } else {
+      setAdded(false)
+    }
+  }, [])
 
   return (
     <div className="shadow-lg rounded-lg">
@@ -80,27 +104,20 @@ export const ProductCard = ({ product }) => {
                 justify-center
               "
             onClick={() => {
-              addToCart(product)
+              if (added) {
+                removeFromCart(product)
+              } else {
+                addToCart(product)
+              }
             }}
           >
-            <span className="absolute md:visible w-64 h-40 mt-12 lg:group-hover:-rotate-45 lg:group-hover:-mt-24 transition-all ease-linear duration-500 bg-gray-800 left-0 top-0"></span>
+            <span className="absolute w-64 h-40 mt-12 lg:group-hover:-rotate-45 lg:group-hover:-mt-24 transition-all ease-linear duration-500 bg-gray-800 left-0 top-0"></span>
 
             <span className="relative flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 mr-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                />
-              </svg>
-              <span className="visible lg:hidden">Add to cart</span>
+              {added ? <RemoveFromCartIcon /> : <AddToCartIcon />}
+              <span className="visible lg:hidden">
+                {added ? "Remove from cart" : "Add to cart"}
+              </span>
             </span>
           </button>
 
@@ -108,21 +125,10 @@ export const ProductCard = ({ product }) => {
             className="bg-gray-700 rounded-full py-2 px-4 my-2 group relative text-sm text-white overflow-hidden  flex flex-row justify-center"
             to={`/product/${product.id}`}
           >
-            <span className="absolute w-64 h-40 mt-12 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-linear duration-500 bg-gray-800 left-0 top-0"></span>
+            <span className="absolute w-64 h-40 mt-12 lg:group-hover:-rotate-45 lg:group-hover:-mt-24 transition-all ease-linear duration-500 bg-gray-800 left-0 top-0"></span>
 
             <span className="relative flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 mr-1"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              <ArrowIcon />
               View Details
             </span>
           </Link>
