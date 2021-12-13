@@ -104,7 +104,7 @@ export const ProductCard = ({ product }) => {
 
           <Link
             className="bg-gray-700 rounded-full py-2 px-4 my-2 group relative text-sm text-white overflow-hidden  flex flex-row justify-center"
-            to={`product/${product.id}`}
+            to={`/product/${product.id}`}
           >
             <span className="absolute w-64 h-40 mt-12 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-linear duration-500 bg-gray-800 left-0 top-0"></span>
 
