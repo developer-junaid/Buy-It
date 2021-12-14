@@ -1,31 +1,20 @@
-import React, { useState } from "react"
-
-// Icon
-import { StarIcon } from "@heroicons/react/solid"
-
-// Radio
-import { RadioGroup } from "@headlessui/react"
+import React from "react"
 
 // Graphql
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
+
+// Components
 import { Breadcrumb } from "components/Breadcrumb/Breadcrumb"
 import { ImageGallery } from "components/ImageGallery/ImageGallery"
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ")
-}
+import { ProductInfo } from "components/ProductInfo/ProductInfo"
 
 export default function ProductDetails({ data }) {
   //prod_KU4C192mG6l4Zh
   // console.log("DATA :", data)
 
-  const reviews = { href: "#", average: 4, totalCount: 117 }
-
   const product = data.price.product
   const price = data.price
   const { bottomImg, leftImg, rightImg } = product.metadata
-
-  const [selectedSize, setSelectedSize] = useState("XL")
 
   console.log("Product details : ", product)
 
@@ -43,6 +32,7 @@ export default function ProductDetails({ data }) {
           imageTop={product.images[0]}
           imageBottom={bottomImg}
         />
+        <ProductInfo product={product} price={price.unit_amount_decimal} />
       </div>
     </div>
   )

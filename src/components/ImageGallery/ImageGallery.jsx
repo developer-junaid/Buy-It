@@ -8,7 +8,7 @@ export const ImageGallery = ({
 }) => {
   return (
     <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
-      <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
+      <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
         <img
           src={imageLeft}
           alt={"Alt"}
@@ -31,7 +31,7 @@ export const ImageGallery = ({
           />
         </div>
       </div>
-      <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
+      <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
         <img
           src={imageRight}
           alt={"Alt"}
