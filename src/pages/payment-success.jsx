@@ -1,13 +1,10 @@
-import { Link } from "gatsby"
 import React from "react"
 
+// Components
+import { PaymentSuccess } from "components/PaymentSuccess/PaymentSuccess"
+
 const paymentSuccess = () => {
-  return (
-    <div>
-      <h2>Payment Successfull !</h2>
-      <Link to="/">Back to home</Link>
-    </div>
-  )
+  return <PaymentSuccess />
 }
 
 export default paymentSuccess
