@@ -13,6 +13,11 @@ exports.createPages = async function ({ actions, graphql }) {
               description
               images
               name
+              localFiles {
+                childImageSharp {
+                  gatsbyImageData(placeholder: BLURRED)
+                }
+              }
             }
             unit_amount_decimal
           }
@@ -20,19 +25,14 @@ exports.createPages = async function ({ actions, graphql }) {
       }
     }
   `)
-
   const prices = data.prices.edges
-
   // Createpages 'product'
   prices.forEach(({ node: price }) => {
     const product = price.product
-
     actions.createPage({
       path: `product/${product.id}`,
       component: require.resolve(`./src/templates/ProductDetails.jsx`),
       context: { id: price.id },
     })
   })
-
-  // Createpages 'category'
 }

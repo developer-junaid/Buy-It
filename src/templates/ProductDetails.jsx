@@ -9,14 +9,9 @@ import { ImageGallery } from "components/ImageGallery/ImageGallery"
 import { ProductInfo } from "components/ProductInfo/ProductInfo"
 
 export default function ProductDetails({ data }) {
-  //prod_KU4C192mG6l4Zh
-  // console.log("DATA :", data)
-
   const product = data.price.product
   const price = data.price
   const { bottomImg, leftImg, rightImg } = product.metadata
-
-  console.log("Product details : ", product)
 
   return (
     <div className="bg-white">

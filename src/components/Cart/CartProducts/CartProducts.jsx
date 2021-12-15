@@ -8,7 +8,10 @@ export const CartProducts = ({ products }) => {
     <table className="w-full text-sm lg:text-base" cellSpacing="0">
       <thead>
         <tr className="h-12 uppercase">
-          <th className="hidden md:table-cell"></th>
+          <th className="hidden md:table-cell">
+            {" "}
+            <span className="hidden">hidden</span>{" "}
+          </th>
           <th className="text-left">Product</th>
           <th className="lg:text-right text-left pl-5 lg:pl-0">
             <span className="lg:hidden" title="Quantity">

@@ -24,6 +24,11 @@ export const ProductsContextProvider = ({ children }) => {
                 description
                 images
                 name
+                localFiles {
+                  childImageSharp {
+                    gatsbyImageData(placeholder: BLURRED)
+                  }
+                }
                 metadata {
                   tag
                   bottomImg
@@ -58,6 +63,7 @@ export const ProductsContextProvider = ({ children }) => {
       bottomImg: product.metadata.bottomImg,
       leftImg: product.metadata.leftImg,
       rightImg: product.metadata.rightImg,
+      optimizedImage: product.localFiles,
     })
 
     return null

@@ -13,6 +13,7 @@ export const SizeSection = ({ sizes, classNames }) => {
         <a
           href="http://blog.elverys.ie/app/uploads/2020/03/SIZE-GUIDES-REVISED-NIKE-1024x418.jpg"
           target="_blank"
+          rel="noreferrer"
           className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
         >
           Size guide

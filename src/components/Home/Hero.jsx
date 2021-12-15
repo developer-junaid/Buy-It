@@ -51,7 +51,7 @@ export const Hero = () => {
         >
           <Typical
             loop={Infinity}
-            wrapper="p"
+            wrapper="span"
             steps={["WE DELIVER", 1200, "YOU LOVE", 1200]}
           />
         </p>

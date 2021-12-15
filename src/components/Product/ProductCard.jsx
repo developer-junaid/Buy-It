@@ -6,6 +6,9 @@ import { Link } from "gatsby"
 // Context
 import { CartStateContext } from "context/cartContext"
 
+// Static Image
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+
 // Components
 import { SizeCard } from "./SizeCard/SizeCard"
 
@@ -76,10 +79,10 @@ export const ProductCard = ({ product }) => {
 
   return (
     <div className="shadow-lg rounded-lg">
-      <div
-        className="h-3/5 bg-cover md:bg-cover bg-center  bg-no-repeat rounded-t-lg"
-        style={{ backgroundImage: `url(${product.image})`, minHeight: "290px" }}
-      ></div>
+      <GatsbyImage
+        image={getImage(product.optimizedImage[0])}
+        alt={product.name}
+      />
 
       <div className="p-4 h-2/5">
         <div>
