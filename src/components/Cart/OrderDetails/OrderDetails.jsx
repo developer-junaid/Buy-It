@@ -38,18 +38,26 @@ export const OrderDetails = () => {
 
     const stripe = await stripePromise
 
+    console.log("1 CART ITEMS BEFORE CALL: ", cartItems)
     const response = await fetch(CHECKOUT, {
       method: "POST",
       body: JSON.stringify({
         cartItems,
       }),
     })
+
+    console.log("2 CART ITEMS AFTER CALL: RESPONSE:  ", response)
+
     const data = await response.json()
+
+    console.log("3 RESPONSE.JSON() :", data)
 
     // Call Stripe's checkout function
     await stripe.redirectToCheckout({
       sessionId: data.id,
     })
+
+    console.log("4 AFTER REDIRECT TO CHECKOUT:")
   }
 
   return (
