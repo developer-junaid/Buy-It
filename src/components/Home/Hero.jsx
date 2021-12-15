@@ -13,7 +13,6 @@ export const Hero = () => {
   return (
     <div className="md:flex mt-20">
       <div className="md:w-2/5 flex flex-col justify-center items-center">
-        <h2></h2>
         <h2
           className="
               font-serif
