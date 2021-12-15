@@ -1,7 +1,7 @@
 import React from "react"
 
 // Links
-import { CHECKOUT } from "../../constants/Permalinks"
+import { CHECKOUT } from "constants/Permalinks"
 
 // Stripe
 import { loadStripe } from "@stripe/stripe-js"

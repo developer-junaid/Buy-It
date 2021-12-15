@@ -12,12 +12,16 @@ module.exports = {
   /* Your site config here */
   plugins: [
     "gatsby-plugin-postcss",
+    "gatsby-plugin-resolve-src",
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-stripe`,
       options: {
-        objects: ["Price"],
+        objects: ["Price", "Product"],
         secretKey: process.env.STRIPE_SECRET_KEY,
-        downloadFiles: false,
+        downloadFiles: true,
       },
     },
   ],
