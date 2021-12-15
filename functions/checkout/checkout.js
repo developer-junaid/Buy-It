@@ -1,7 +1,7 @@
 const stripe = require("stripe")(process.env.GATSBY_STRIPE_SECRET_KEY)
 
 const handler = async event => {
-  const origin = event.multiValueHeaders.origin[0]
+  // const origin = event.multiValueHeaders.origin[0]
   const { cartItems } = JSON.parse(event.body)
 
   try {
@@ -9,8 +9,8 @@ const handler = async event => {
       payment_method_types: ["card"],
       line_items: [...cartItems],
       mode: "payment",
-      success_url: `${origin}/payment-success/`,
-      cancel_url: `${origin}`,
+      success_url: `/payment-success`,
+      cancel_url: `/`,
     })
 
     return {
