@@ -1,4 +1,4 @@
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
+const stripe = require("stripe")(process.env.GATSBY_STRIPE_SECRET_KEY)
 
 const handler = async event => {
   const origin = event.multiValueHeaders.origin[0]
