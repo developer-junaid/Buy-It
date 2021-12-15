@@ -2,12 +2,12 @@ import React from "react"
 
 // Link
 import { Link } from "gatsby"
-import { OrderProductCard } from "components/OrderProductCard/OrderProductCard"
+import { CartIcon } from "utils/Icons"
 
 export const PaymentSuccess = () => {
   return (
     <div className="flex flex-col py-10 pt-20">
-      <div>
+      <div className="flex flex-col justify-center text-center">
         <p className="text-lg uppercase text-blue-600 font-medium">
           Thank you!
         </p>
@@ -22,50 +22,27 @@ export const PaymentSuccess = () => {
         <p className="text-blue-600 font-medium">51548394822291842931</p>
       </div>
       <hr className="my-8" />
-      <OrderProductCard />
-      <OrderProductCard />
-      <OrderProductCard />
-      <div className="flex flex-col w-full">
-        <div className="py-6 flex  w-full">
-          <div className="py-5  w-1/2 flex flex-col items-left pl-32">
-            <p className="font-medium mb-4">Shipping address</p>
-            <p className="text-md text-gray-500 w-2/5">
-              Kristin Watson 7363 Cynthia Pass Toronto, ON N3Y 4H8
-            </p>
-          </div>
-          <div className="py-5  w-1/2 flex flex-col items-left pl-32">
-            <p className="font-medium mb-4">Billing address</p>
-            <p className="text-md text-gray-500 w-2/5">
-              Kristin Watson 7363 Cynthia Pass Toronto, ON N3Y 4H8
-            </p>
-          </div>
+
+      <div className="py-6 flex flex-col justify-center items-center text-center  w-full">
+        <div className="py-5  w-full large:w-1/2 flex flex-col items-center">
+          <p className="font-medium mb-4">Payment method</p>
+          <p className="text-md text-gray-500 w-2/5">Stripe payment</p>
         </div>
-        <hr />
-        <div className="py-6 flex  w-full">
-          <div className="py-5  w-1/2 flex flex-col items-left pl-32">
-            <p className="font-medium mb-4">Payment method</p>
-            <p className="text-md text-gray-500 w-2/5">Stripe payment</p>
-          </div>
-          <div className="py-5  w-1/2 flex flex-col items-left pl-32">
-            <p className="font-medium mb-4">Shipping method</p>
-            <p className="text-md text-gray-500 w-2/5">
-              Leopards <br /> Takes up to 3 working days
-            </p>
-          </div>
+        <div className="py-5  w-full lg:w-1/2 flex flex-col items-center">
+          <p className="font-medium mb-4">Shipping method</p>
+          <p className="text-md text-gray-500 w-2/5">
+            Leopards <br /> Takes up to 3 working days
+          </p>
         </div>
       </div>
-      <hr />
-      <div className=" px-32 py-8">
-        <p className="text-md font-medium flex justify-between leading-10">
-          Subtotal <span className="text-gray-500 mr-8">$36</span>
-        </p>
-        <p className="text-md font-medium flex justify-between leading-10">
-          Shipping <span className="text-gray-500 mr-8">$0</span>{" "}
-        </p>
-        <p className="text-md font-medium flex justify-between leading-10">
-          Total <span className="text-gray-500 mr-8">$23</span>{" "}
-        </p>
-      </div>
+
+      <Link
+        to="/"
+        className="mt-10 mx-auto w-full sm:w-64 bg-gray-800 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+      >
+        <CartIcon />
+        Back to shopping
+      </Link>
     </div>
   )
 }

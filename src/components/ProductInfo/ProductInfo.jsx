@@ -22,6 +22,24 @@ export const ProductInfo = ({ product, price }) => {
   const { cart, setCart } = useContext(CartStateContext)
   const [added, setAdded] = useState(false)
 
+  const sizes = [
+    { name: 40, inStock: false },
+    { name: 41, inStock: true },
+    { name: 42, inStock: true },
+    { name: 43, inStock: true },
+    { name: 44, inStock: true },
+    { name: 45, inStock: false },
+  ]
+
+  const highlights = [
+    "Higher, Softer, Wider",
+    "More Bounce With Every Ounce",
+    "Stability Evolved",
+    "Created With Data",
+  ]
+
+  const reviews = { href: "#_", average: 4, totalCount: 117 }
+
   const addToCart = product => {
     let isEmpty = cart.length === 0
 
@@ -66,25 +84,6 @@ export const ProductInfo = ({ product, price }) => {
       timer: 1500,
     })
   }
-
-  const sizes = [
-    { name: 40, inStock: false },
-    { name: 41, inStock: true },
-    { name: 42, inStock: true },
-    { name: 43, inStock: true },
-    { name: 44, inStock: true },
-    { name: 45, inStock: true },
-    { name: 46, inStock: false },
-  ]
-
-  const highlights = [
-    "Higher, Softer, Wider",
-    "More Bounce With Every Ounce",
-    "Stability Evolved",
-    "Created With Data",
-  ]
-
-  const reviews = { href: "#", average: 4, totalCount: 117 }
 
   return (
     <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
