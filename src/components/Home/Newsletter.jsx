@@ -1,6 +1,39 @@
-import React from "react"
+import React, { useState } from "react"
+
+// Sweetalerts
+import Swal from "sweetalert2"
 
 export const Newsletter = () => {
+  const [email, setEmail] = useState("")
+
+  const handleChange = event => {
+    setEmail(event.target.value)
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault()
+
+    if (email === "") {
+      Swal.fire({
+        position: "center",
+        icon: "info",
+        title: "Please enter email",
+        showConfirmButton: false,
+        timer: 1500,
+      })
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Subscribed to newsletter",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setEmail("")
+      })
+    }
+  }
+
   return (
     <div className="rounded-lg shadow-lg my-20 flex">
       <div
@@ -24,10 +57,10 @@ export const Newsletter = () => {
             Want to hear from us when we have new offers? Sign up for our
             newsletter and we'll email you every time we have new sale offers,
           </p>
-          <div>
+          <form onSubmit={handleSubmit}>
             <input
               type="email"
-              name=""
+              name="email"
               placeholder="Enter email address"
               className="
                   bg-gray-600
@@ -40,6 +73,9 @@ export const Newsletter = () => {
                   focus\:outline-none
                   mb-4
                 "
+              value={email}
+              required
+              onChange={handleChange}
             />
             <button
               type="submit"
@@ -47,7 +83,7 @@ export const Newsletter = () => {
             >
               Subscribe
             </button>
-          </div>
+          </form>
         </div>
       </div>
       <div className="lg:w-2/5 w-full lg:flex lg:flex-row hidden">
