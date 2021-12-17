@@ -26,38 +26,44 @@ export const OrderDetails = () => {
   })
 
   const redirectToCheckout = async () => {
-    // Cart Items
-    const cartItems = []
+    try {
+      // Cart Items
+      const cartItems = []
 
-    cart.map(product => {
-      cartItems.push({ price: product.priceId, quantity: product.quantity })
-      subtotal += product.unit_price * product.quantity
+      cart.map(product => {
+        cartItems.push({ price: product.priceId, quantity: product.quantity })
+        subtotal += product.unit_price * product.quantity
 
-      return null
-    })
+        return null
+      })
 
-    const stripe = await stripePromise
+      const stripe = await stripePromise
 
-    console.log("1 CART ITEMS BEFORE CALL: ", cartItems)
-    const response = await fetch(CHECKOUT, {
-      method: "POST",
-      body: JSON.stringify({
-        cartItems,
-      }),
-    })
+      console.log("CART ITEMS BEFORE CALL: ", cartItems)
 
-    console.log("2 CART ITEMS AFTER CALL: RESPONSE:  ", response)
+      console.log("run fetch, checkout and passing cart items ...")
+      const response = await fetch(CHECKOUT, {
+        method: "POST",
+        body: JSON.stringify({
+          cartItems,
+        }),
+      })
 
-    const data = await response.json()
+      console.log("CART ITEMS AFTER CALL: RESPONSE:  ", response)
 
-    console.log("3 RESPONSE.JSON() :", data)
+      const session = await response.json()
 
-    // Call Stripe's checkout function
-    await stripe.redirectToCheckout({
-      sessionId: data.id,
-    })
+      console.log("3 RESPONSE.JSON() :", session)
 
-    console.log("4 AFTER REDIRECT TO CHECKOUT:")
+      // Call Stripe's checkout function
+      await stripe.redirectToCheckout({
+        sessionId: session.id,
+      })
+
+      console.log("4 AFTER REDIRECT TO CHECKOUT:")
+    } catch (error) {
+      console.log("Error in client: ", error)
+    }
   }
 
   return (

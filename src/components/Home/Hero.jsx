@@ -4,7 +4,7 @@ import React from "react"
 import Typical from "react-typical"
 
 // Image
-import soccerSVG from "assets/soccer.svg"
+import soccerSVG from "../../../static/soccer.svg"
 
 // Link
 import { Link } from "gatsby"
