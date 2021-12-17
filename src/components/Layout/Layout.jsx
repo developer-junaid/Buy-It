@@ -2,7 +2,7 @@ import React from "react"
 
 // Meta
 import { Helmet } from "react-helmet"
-import titleIcon from "assets/cart.svg"
+import titleIcon from "../../../static/cart.svg"
 
 // Components
 import { Footer } from "./Footer"
@@ -25,7 +25,7 @@ export const Layout = ({ children }) => {
             <link rel="canonical" href="#" />
             <link
               rel="shortcut icon"
-              href="assets/cart.svg"
+              href="../../../static/cart.svg"
               type="image/x-icon"
             />
             <meta

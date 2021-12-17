@@ -26,30 +26,35 @@ export const OrderDetails = () => {
   })
 
   const redirectToCheckout = async () => {
-    // Cart Items
-    const cartItems = []
+    try {
+      // Cart Items
+      const cartItems = []
 
-    cart.map(product => {
-      cartItems.push({ price: product.priceId, quantity: product.quantity })
-      subtotal += product.unit_price * product.quantity
+      cart.map(product => {
+        cartItems.push({ price: product.priceId, quantity: product.quantity })
+        subtotal += product.unit_price * product.quantity
 
-      return null
-    })
+        return null
+      })
 
-    const stripe = await stripePromise
+      const stripe = await stripePromise
 
-    const response = await fetch(CHECKOUT, {
-      method: "POST",
-      body: JSON.stringify({
-        cartItems,
-      }),
-    })
-    const data = await response.json()
+      const response = await fetch(CHECKOUT, {
+        method: "POST",
+        body: JSON.stringify({
+          cartItems,
+        }),
+      })
 
-    // Call Stripe's checkout function
-    await stripe.redirectToCheckout({
-      sessionId: data.id,
-    })
+      const session = await response.json()
+
+      // Call Stripe's checkout function
+      await stripe.redirectToCheckout({
+        sessionId: session.id,
+      })
+    } catch (error) {
+      console.log("Error in client: ", error)
+    }
   }
 
   return (
