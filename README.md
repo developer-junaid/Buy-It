@@ -1,10 +1,10 @@
-# JAMStack Todo List
+# Buyit E-commerce Website
 
-### _Todo list Application using Serverless JAM Stack (Gatsby, GraphQL, FaunaDB, Serverless Functions) !!_
+### _E-commerce website developed using (GatsbyJs + TailwindCSS + GraphQl + Stripe + Netlify Serverless Functions) !!_
 
-### Video :link: https://youtu.be/5lHbViMzMkc
+### Video :link: https://youtu.be/LiXNgtxwBEk
 
-### Link :link: https://todo-list-serverless.netlify.app/
+### Link :link: https://buyit-shoes.netlify.app/
 
 ## Desktop
 
