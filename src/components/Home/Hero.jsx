@@ -35,6 +35,7 @@ export const Hero = () => {
               text-center
               text-xl
               md:text-left md:self-start
+              hidden md:block
             "
         >
           The leading online marketplace for shoes
