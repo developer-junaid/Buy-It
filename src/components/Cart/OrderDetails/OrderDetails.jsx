@@ -39,9 +39,6 @@ export const OrderDetails = () => {
 
       const stripe = await stripePromise
 
-      console.log("CART ITEMS BEFORE CALL: ", cartItems)
-
-      console.log("run fetch, checkout and passing cart items ...")
       const response = await fetch(CHECKOUT, {
         method: "POST",
         body: JSON.stringify({
@@ -49,18 +46,12 @@ export const OrderDetails = () => {
         }),
       })
 
-      console.log("CART ITEMS AFTER CALL: RESPONSE:  ", response)
-
       const session = await response.json()
-
-      console.log("3 RESPONSE.JSON() :", session)
 
       // Call Stripe's checkout function
       await stripe.redirectToCheckout({
         sessionId: session.id,
       })
-
-      console.log("4 AFTER REDIRECT TO CHECKOUT:")
     } catch (error) {
       console.log("Error in client: ", error)
     }
