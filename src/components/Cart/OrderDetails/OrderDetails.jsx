@@ -72,7 +72,7 @@ export const OrderDetails = () => {
             Subtotal
           </div>
           <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-            {subtotal}$
+            {subtotal.toFixed(2)}$
           </div>
         </div>
 
@@ -89,7 +89,7 @@ export const OrderDetails = () => {
             Total
           </div>
           <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-            {total}$
+            {total.toFixed(2)}$
           </div>
         </div>
         <button
